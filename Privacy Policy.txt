@@ -1,0 +1,212 @@
+# Privacy Policy — Staple Cook
+
+**Effective Date:** November 10, 2026  
+**Last Updated:** November 10, 2026  
+**Developer:** Staple Cook — Joshua Bowers  
+**Contact:** baojiahobby@gmail.com  
+**App Name:** Staple Cook
+**Bundle ID:** `com.staplecook.app`  
+**Platform:** Android
+
+---
+
+## 1. Overview & Our Core Commitment
+
+Staple Cook is built on a simple principle: **your recipes are yours, and only yours.** The app is designed to be offline-first. Your recipe collection, cooking history, grocery lists, and personal notes are stored exclusively on your device and in your own Google account backup — never on our servers, because we do not operate any servers that handle your personal recipe data.
+
+We are committed to full transparency. This policy explains precisely what data is processed, by whom, and for what purpose.
+
+---
+
+## 2. Data We Collect & Store — What Stays on YOUR Device
+
+The following data is **created by you, stored entirely on your device**, in a local SQLite database (`recipes.db`) inside the app's private storage:
+
+| Data Type | What It Contains | Leaves Your Device? |
+|---|---|---|
+| **Recipes** | Title, ingredients, steps, servings, prep/cook times, your personal notes | Only via Google Auto Backup (encrypted, to your personal Google account) |
+| **Recipe source URL** | The web address you imported from | Only for photo re-fetching on Wi-Fi after a restore |
+| **Recipe photos** | Full-size images and thumbnails stored in app-private folders | Full photos: Never backed up. Thumbnails: Google Auto Backup only |
+| **Custom lists** | Your named recipe collections (e.g., "Weeknight Dinners") | Only via Google Auto Backup |
+| **Cook logs** | Dates you cooked a recipe, star ratings, your personal notes, serving scale used | Only via Google Auto Backup |
+| **Grocery cart** | Recipes and ingredients temporarily added to your shopping list | Never |
+| **App settings** | In-app preferences (e.g., ad close state) | Never |
+
+> [!NOTE]  
+> **We do not have access to any of this data.** It never passes through our servers or infrastructure.
+
+---
+
+## 3. Data That Leaves Your Device
+
+### 3.1 When You Import a Recipe from a Website (Optional, User-Initiated)
+
+When you tap **Import → Via Web Address (URL)** and provide a recipe URL:
+
+- The app makes a direct HTTPS request **from your device** to that third-party website to download the recipe page and its photo.
+- No intermediary server is involved. The request is made exactly as if you opened the page in a web browser.
+- **What is sent:** A standard HTTP request including a browser-style User-Agent string and your device's IP address (required by all internet communication). No account data, no personal identifiers from Staple Cook are transmitted.
+- **What is stored locally:** The recipe title, ingredients, steps, photo, source URL, and the website's hostname (`sourceHost`). No cookies, trackers, or session data from the website are retained.
+- The third-party website's own privacy policy governs how they handle the web request (IP address, etc.).
+
+### 3.2 Photo Re-Fetching (Automatic, Wi-Fi Only)
+
+When you restore from backup or install fresh on a new phone, the app may silently re-download full-size recipe photos in the background, using the saved `imageUrl` and `sourceUrl`. This only occurs:
+- Over **Wi-Fi** (never mobile data).
+- If a full-size photo is missing from device storage.
+- Using the same direct HTTPS mechanism described in 3.1.
+
+You can trigger or disable this manually in **Settings → Re-fetch missing photos now**.
+
+### 3.3 Google AdMob (Ads — When Enabled)
+
+Staple Cook may display banner advertisements served by **Google AdMob**. When ads are active, Google AdMob collects data for ad personalization and measurement, including:
+
+- Advertising ID (Android advertising identifier, resettable in device Settings)
+- Device and app information (OS version, app version, screen size)
+- General location (country/region level, derived from IP address)
+- Ad interaction data (impressions, clicks)
+
+**Google AdMob is an independent data controller** for this data. Their collection is governed by the [Google Privacy Policy](https://policies.google.com/privacy) and [Google's EU User Consent Policy](https://www.google.com/about/company/user-consent-policy/).
+
+We use **test ad unit IDs in debug builds** to prevent accidental invalid traffic. We do not click our own ads.
+
+**You can opt out of personalized ads** at any time:
+- Android: **Settings → Google → Ads → Opt out of Ads Personalization**
+- Or reset your Advertising ID: **Settings → Google → Ads → Reset advertising ID**
+
+### 3.4 Google Auto Backup (Android System Feature)
+
+Android automatically and securely backs up the following app data to your personal, encrypted Google account:
+- `recipes.db` (all recipe data, lists, and cook logs)
+- `files/thumbs/` (small recipe photo thumbnails, ~20–30 KB each)
+
+Full-size photos are **explicitly excluded** from cloud backup to remain well within Android's 25 MB backup limit.
+
+This backup is entirely managed by **Google's Android backup infrastructure**. It is encrypted in transit and at rest, and is associated with your Google account — not ours. Google's handling of backup data is governed by [Google's Privacy Policy](https://policies.google.com/privacy).
+
+You can disable this at any time: **Android Settings → Google → Backup → Toggle off "Back up to Google Drive"**
+
+---
+
+## 4. Data We Do NOT Collect
+
+We explicitly confirm that Staple Cook does **not**:
+
+- ❌ Require you to create an account or sign in
+- ❌ Collect your name, email address, phone number, or any personal identifier
+- ❌ Transmit your recipe data to any Staple Cook server or third-party analytics service
+- ❌ Use analytics SDKs (no Firebase Analytics, Crashlytics, Mixpanel, Amplitude, etc.)
+- ❌ Track your location
+- ❌ Access your contacts, calendar, or SMS
+- ❌ Share or sell your data to any third party
+- ❌ Perform behavioral profiling or build user interest graphs
+- ❌ Use cookies (the app has no web backend)
+
+---
+
+## 5. Android Permissions
+
+Staple Cook requests the following Android permissions:
+
+| Permission | Why It Is Needed |
+|---|---|
+| `INTERNET` | To download recipe pages and photos from websites you explicitly import, and to serve ads (if enabled) |
+| `POST_NOTIFICATIONS` | To send cooking timer alerts when a step timer expires, even if the app is in the background |
+
+The app does **not** request camera, microphone, contacts, location, storage, or any other sensitive permissions in its current release.
+
+---
+
+## 6. Children's Privacy
+
+Staple Cook does not knowingly collect any information from children under the age of 13 (United States) or 16 (European Union). The app does not contain features designed to collect data from children. If you believe a child has inadvertently provided any personal information, please contact us and we will address it promptly.
+
+---
+
+## 7. Your Rights Under GDPR (European Users)
+
+If you are located in the European Economic Area (EEA), United Kingdom, or Switzerland, you have the following rights under the **General Data Protection Regulation (GDPR)**:
+
+| Right | How to Exercise It |
+|---|---|
+| **Right of Access (Art. 15)** | Your data is entirely on your own device. Use **Settings → Backup (.json)** to export and inspect a full copy at any time |
+| **Right to Rectification (Art. 16)** | Edit any recipe, note, rating, or list directly within the app |
+| **Right to Erasure ("Right to be Forgotten") (Art. 17)** | Delete individual recipes, logs, or lists within the app. Uninstalling the app removes all local data. Disable Google Auto Backup and delete the backup in your Google account settings to remove cloud copies |
+| **Right to Data Portability (Art. 20)** | Use **Settings → Backup (.json)** to export all your data as a standard JSON file at any time |
+| **Right to Object to Personalized Advertising (Art. 21)** | Opt out via Android Settings → Google → Ads (if ads are enabled) |
+| **Right to Lodge a Complaint** | Contact your local EU data protection authority |
+
+**Legal Basis for Processing:**  
+Where GDPR applies, any processing that leaves your device (recipe URL import, photo fetching) is conducted on the basis of **Article 6(1)(b) — performance of a service you explicitly requested** (you chose to import that specific recipe). Ad data processing (when ads are enabled) relies on **consent** (Article 6(1)(a)).
+
+**Data Controller:** For any data you export and control locally, you are the data controller. For AdMob data (when ads are enabled), Google is an independent data controller.
+
+---
+
+## 8. Your Rights Under CCPA / CPRA (California Users)
+
+If you are a California resident, the **California Consumer Privacy Act (CCPA)** and **California Privacy Rights Act (CPRA)** provide you with the following rights:
+
+**Right to Know:** You have the right to know what personal information is collected about you. We do not collect personal information on our servers. See Section 2 for a full breakdown of locally stored data.
+
+**Right to Delete:** You can delete your data at any time within the app or by uninstalling it. Contact us to request any additional assistance.
+
+**Right to Opt-Out of Sale or Sharing:** Staple Cook **does not sell or share your personal information** with third parties for monetary or other valuable consideration. We have not done so in the past 12 months. No opt-out mechanism is required as we do not engage in this activity.
+
+**Right to Non-Discrimination:** We will not discriminate against you for exercising your privacy rights.
+
+**Sensitive Personal Information:** We do not collect sensitive personal information as defined under CPRA (e.g., Social Security numbers, financial account information, precise geolocation, racial or ethnic origin, etc.).
+
+**California "Shine the Light" Law:** We do not disclose personal information to third parties for their direct marketing purposes.
+
+---
+
+## 9. Data Retention
+
+| Data | Retention Period | How to Delete |
+|---|---|---|
+| Local recipe data | Until you delete it in-app or uninstall the app | Delete recipes individually, or uninstall the app |
+| Google Auto Backup | Until you disable backup or delete your Google account backup data | Android Settings → Google → Backup → Manage backup data |
+| AdMob data (when enabled) | Governed by [Google's data retention policies](https://policies.google.com/technologies/retention) | Reset your Advertising ID or opt out in Android settings |
+
+---
+
+## 10. Security
+
+- All recipe data is stored in an encrypted SQLite database on your device protected by Android's standard application sandbox.
+- All network requests (recipe imports, photo downloads, ad requests) use **HTTPS/TLS** to protect data in transit.
+- Google Auto Backup data is encrypted in transit and at rest by Google.
+- We follow Android security best practices including content provider restrictions and private app storage.
+
+---
+
+## 11. Third-Party Services
+
+| Service | Purpose | Privacy Policy |
+|---|---|---|
+| **Google AdMob** | Banner advertising | [Google Privacy Policy](https://policies.google.com/privacy) |
+| **Google Play Services** | AdMob SDK, Android backup infrastructure | [Google Privacy Policy](https://policies.google.com/privacy) |
+| **Recipe websites** | Direct HTTPS requests to fetch recipes you import | The respective site's own privacy policy |
+
+No other third-party SDKs, analytics tools, crash reporters, or tracking libraries are integrated in this app.
+
+---
+
+## 12. Changes to This Policy
+
+We may update this Privacy Policy from time to time. When we make changes, we will update the **Last Updated** date at the top of this document. For significant changes, we will provide notice through the Google Play Store listing or an in-app notification. Continued use of the app after a policy update constitutes acceptance of the revised terms.
+
+---
+
+## 13. Contact Us
+
+If you have any questions, concerns, or requests regarding this Privacy Policy or your data, please contact us:
+
+**Email:** baojiahobby@gmail.com  
+**Developer Name:** Joshua Bowers
+
+---
+
+*This Privacy Policy was last reviewed and prepared on November 10, 2026.*
+
